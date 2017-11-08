@@ -1,0 +1,37 @@
+{
+  "name": "zebragrouptask",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vayliiis/zebra-group-task.git"
+  },
+  "keywords": [
+    "landingpage",
+    "html",
+    "css",
+    "js",
+    "swipe"
+  ],
+  "author": "L.Denis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vayliiis/zebra-group-task/issues"
+  },
+  "homepage": "https://github.com/Vayliiis/zebra-group-task#readme",
+  "devDependencies": {
+    "color": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-if": "^2.0.2",
+    "gulp-inject": "^4.3.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-wrap": "^0.13.0",
+    "http": "0.0.0",
+    "st": "^1.2.2",
+    "yargs": "^10.0.3"
+  }
+}
