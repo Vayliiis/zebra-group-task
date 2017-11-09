@@ -4,14 +4,37 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes">
         <title>Zebra Group Task | Landing page</title>
-        <link rel="stylesheet" href="../../styles/home/home.css">        
+        <link rel="stylesheet" href="../../styles/home/home.css">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.5/css/swiper.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="http://allfont.ru/allfont.css?fonts=blackjackregular" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
     </head>
     <body>
-        <div class="header"></div>
+        <div class="header">
+            <div class="logo">
+                <div class="logo__image"></div>
+            </div>
+            <div class="header__menubtn"><i class="fa fa-navicon"></i></div>
+        </div>
         <div class="page-content">
             <%= contents %>
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+            <span class="footer__copyright">© <div class="footer__perth">Perth.</div> Breeding pixels since the naughties.</span>    
+            <div class="footer__upbtn">
+                <div class="fa fa-chevron-up footer__upbtn-icon"></div>
+            </div>
+        </div>
         <script src="../../scripts/home/home.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.5/js/swiper.min.js"></script>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                direction: 'vertical',
+                slidesPerView: 1,
+                mousewheel: true,
+                loop: false,
+            })    
+        </script>
     </body>
 </html>

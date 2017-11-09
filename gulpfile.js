@@ -70,15 +70,16 @@ gulp.task('sass', function() {
 });
 
 gulp.task('server', function(done) {
-    http.createServer(st({path: './app/build', index: '_layout.html', cache: false}))
+    http.createServer(st({path: './app', index: '_layout.html', cache: false}))
     .listen(8080, done);
 });
     
 gulp.task('build', ['htmls', 'scripts', 'sass']);
     
 gulp.task('start', ['server'], function() {
-    livereload.listen({basePath: 'build'});
+    livereload.listen({basePath: 'app'});
     gulp.watch(settings.styles.sourceSass, ['sass']);
     gulp.watch(settings.scripts.source, ['scripts']);
     gulp.watch(settings.htmls.source, ['htmls']);
+    gulp.watch(settings.htmls.layout, ['htmls']);
 });

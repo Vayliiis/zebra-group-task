@@ -1,14 +1,486 @@
+@mixin logo-size() {
+    width: 100px;
+    height: 100px;
+}
+@mixin image($url) {
+    background-image: url($url);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+$logoshadowcolor1: #0da9e5;
+$logoshadowcolor2: #27b0e6;
+$contentpath: '../../../content/';
+
+// LAYOUT
 html, body {
     position: relative;
     height: 100%;
-    width: 100%;    
+    width: 100%; 
+    margin: 0;
+    padding: 0;
+    
+    font-family: 'Roboto', sans-serif;
 }
 .header {
-   
+    border-top: 8px solid white;
+    position: absolute;
+    top: 0;
+    width: 100%;   
+    z-index: 10;         
+}
+.header__menubtn {
+    position: absolute;
+    right: 160px;
+    top: 24px;
+    z-index: 10;
+    font-size: 35px;
+    color: white;
+}
+.logo {
+    position: absolute;
+    margin-top: -8px;
+    margin-left: 160px; 
+    
+    @include logo-size();
+    
+    background-color: white;
+    box-shadow: 0 4px 0 0 $logoshadowcolor1, 
+        14px 15px 0 0 $logoshadowcolor2; 
+    text-align: center;
+}
+.logo:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.logo__image {  
+    display: inline-block;
+    vertical-align: middle;
+    
+    height: 47px;
+    width: 28px;
+    
+    background-image: url($contentpath + 'logo-icon.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .page-content {
-   
+    height: 100%;
+    width: 100%;
 }
 .footer {
+    position: relative;
+    height: 100px;
+    text-align: center;
+}
+.footer:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.footer__copyright {
+    font-size: 13px;
+    font-weight: 500;  
+    width: calc(100% - 70px);
+}
+.footer__perth {
+    color: #6dc5ea;
+}
+.footer__upbtn {
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    color: black;
+    padding: 15px;
+    text-align: center;
+}
+.footer__upbtn:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.footer__upbtn:hover {
+    background-color: #828282;
+    color: white;    
+}
 
+// HOME
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    height: 100% !important;
+}
+
+// ACTIONBUTTON
+.actionbutton {
+    padding: 17px 28px;
+    border: 2px solid;
+    border-radius: 3px;    
+    display: inline-block;    
+}
+.actionbutton-text {    
+    font-size: 15px;    
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+.actionbutton-icon {
+    display: block;
+}
+
+// SLIDE 1
+$patternimage: '../../../content/pattern.png';
+.welcome {
+    background: rgb(37, 188, 234) url($patternimage);
+    overflow: hidden;
+    background-blend-mode: overlay;
+}
+.welcome__text {
+    margin: 151px 155px 0 auto;
+    width: 960px;
+    text-align: right;
+    position: relative;
+}
+.welcome__heading {
+    margin-bottom: -11px;
+    
+    font-size: 70px;
+    color: white;
+    font-family: 'BlackJackRegular', arial;
+}
+.welcome__subheading {
+    font-size: 35px;
+    color: white;
+    font-weight: 300;
+    margin-bottom: 47px;
+    letter-spacing: 0.25px;
+    margin-right: 5px;
+}
+.welcome__actionbutton {
+    @extend .actionbutton;
+    margin-right: 6px;
+    margin-right: 4px;
+    border-color: white;
+    color: white;
+}
+.welcome__actionbutton-text {    
+    @extend .actionbutton-text;  
+    text-decoration: underline;
+}
+.welcome__actionbutton-icon {
+    @extend .actionbutton-icon;
+}
+.welcome__phoneimage {
+    position: absolute;
+    left: 231px;
+    bottom: -215px;
+    width: 227px;
+    height: 482px;
+    
+    background-image: url($contentpath + 'device-welcome.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.welcome__phoneimage-overlay {
+    position: absolute;
+    z-index: 1;
+    width: 199px;
+    height: 350px;
+    margin: auto 15px;
+    margin-top: 66px;
+    
+    background-color: #f3787a;
+}
+
+// SLIDE 2
+.aboutus {
+    overflow: hidden;
+}
+.aboutus__info {
+    margin-top: 136px;
+    margin-left: 160px;
+    width: 555px;
+}
+.aboutus__heading {
+    font-size: 40px;
+    font-weight: 300;
+}
+.aboutus__text {
+    font-size: 17px;
+    margin-top: 29px;
+    line-height: 24px;   
+}
+.aboutus__quote {
+    margin-top: 25px;
+    padding-left: 17px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 23px;
+    font-size: 17px;
+    border-left: 7px solid #4eacdd;
+}
+.aboutus__actiobutton {
+    @extend .actionbutton;
+    border-color: #14af8f;
+    color: #2fb79b;
+    margin-top: 72px;
+    padding-left: 30px;
+}
+.aboutus__actiobutton-text {
+    @extend .actionbutton-text; 
+    margin-right: 15px;
+}
+.aboutus__actiobutton-icon {
+    @extend .actionbutton-icon;
+}
+.aboutus__tabletimage {
+    position: absolute;
+    right: -68px;
+    top: 150px;
+    width: 408px;
+    height: 577px;
+    background-image: url($contentpath+'device-tablet.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.aboutus__tabletimage-overlay {
+    width: 355px;
+    height: 475px;
+    margin-left: 27px;
+    margin-top: 51px;
+    background-color: #fee9a3;
+}
+
+// SLIDE 3
+.getdog {
+    overflow: hidden;
+}
+.getdog__info {
+    @extend .aboutus__info;
+    margin-left: auto;
+    width: 400px;
+    margin-right: 163px;
+    margin-top: 94px;
+}
+.getdog__heading {
+    @extend .aboutus__heading;
+}
+.getdog__slogan {
+    @extend .aboutus__text;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 7px;
+    margin-top: 32px;
+}
+.getdog__text {
+    @extend .aboutus__text;
+    margin-left: 7px;    
+}
+.getdog__actionbutton {
+    @extend .actionbutton;
+    border-color: #ea4c89;
+    color: #ea4c89;
+    margin-left: 7px;
+    margin-top: 55px;
+    padding-right: 32px;
+}
+.getdog__actionbutton-text {
+    @extend .actionbutton-text;
+    margin-right: 13px;
+    margin-left: -2px;    
+}
+.getdog__actionbutton-icon {
+    @extend .actionbutton-icon;
+}
+.getdog__images {
+    position: absolute;
+    width: 760px;
+    height: 365px;
+    bottom: 0;
+}
+$iphoneimage: $contentpath+'iphone5.png';
+$ipadminiimage: $contentpath+'ipad_mini.png';
+$ipadimage: $contentpath+'ipad.png';
+$macbookretinaimage: $contentpath+'macbook_retina.png';
+$imacimage: $contentpath+'imac.png';
+.getdog__iphone5 {
+    @include image($iphoneimage);
+    width: 75px;
+    height: 156px;
+    position: absolute;
+    right: 96px;
+    bottom: -53px;
+}
+.getdog__iphone5:after {
+    content: '';
+    position: absolute;
+    background-color: #f3787a;
+    width: 65px;
+    height: 114px;
+    top: 22px;
+    left: 5px;
+}
+.getdog__ipadmini {
+    @include image($ipadminiimage);
+    width: 119px;
+    height: 169px;
+    position: absolute;
+    right: 2px;
+    bottom: -19px;
+}
+.getdog__ipadmini:after {
+    content: '';
+    position: absolute;
+    background-color: #39dcc9;
+    width: 104px;
+    height: 139px;
+    top: 16px;
+    left: 8px;
+}
+.getdog__ipad {
+    @include image($ipadimage);
+    width: 173px;
+    height: 246px;
+    position: absolute;
+    right: 135px;
+    bottom: -46px;
+}
+.getdog__ipad:after {
+    content: '';
+    position: absolute;
+    width: 151px;
+    height: 202px;
+    background-color: #fee9a3;
+    top: 22px;
+    left: 12px;
+}
+.getdog__macbookretina {
+    @include image($macbookretinaimage);
+    width: 394px;
+    height: 225px;    
+    position: absolute;
+    right: 436px;
+    bottom: -63px;
+}
+.getdog__macbookretina:after {
+    content: '';
+    position: absolute;
+    background-color: #f79231;
+    width: 299px;
+    height: 187px;    
+    top: 12px;
+    left: 36px;
+}
+.getdog__imac {
+    @include image($imacimage);
+    width: 469px;
+    height: 388px;
+    position: absolute;
+    right: 186px;
+    bottom: -23px;
+}
+.getdog__imac:after {
+    content: '';
+    position: absolute;
+    background-color: #70c6eb;
+    width: 430px;
+    height: 258px;
+    top: 20px;
+    left: 20px;
+}
+
+// SLIDE 4
+.likeit {
+    height: 328px !important;
+}
+.likeit__info {
+    padding-top: 88px;
+    text-align: center;
+    height: 240px;
+    background: #0fad8c url($patternimage);
+    background-blend-mode: overlay;
+}
+.likeit__heading {
+    font-size: 42px;
+    text-transform: capitalize;
+    letter-spacing: -1.3px;
+    font-weight: 500;
+    color: white;
+}
+.likeit__actionbutton {
+    @extend .actionbutton;
+    border-color: white;
+    color: white;
+    margin-top: 30px;
+    padding: 18px 33px 17px 36px;
+}
+.likeit__actionbutton-text {
+    @extend .actionbutton-text;
+    margin-right: 24px;
+}
+.likeit__actionbutton-icon {
+    @extend .actionbutton-icon;
+}
+
+// SLIDE 5
+.social {
+    
+}
+.social__info {
+    text-align: center;
+}
+.social__button {
+    border: 3px solid;
+    text-align: center;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 46px 16px;
+}
+.social__button:active, 
+.social__button:hover {
+    color: #4eacdd;
+    border-color: #4eacdd;
+} 
+.social__button + .social__button {
+    
+}
+.social__button:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.social__button .icon {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 22px !important;
+}
+
+.social__form {
+    display: none;
+}
+.social__form-label {
+    display: inline-block;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 17px;
+    width: 192px;
+}
+.social__form input {
+    
+}
+.social__form-subscribe {
+    
+}
+.social__form-subscribe-icon {
+    
 }
