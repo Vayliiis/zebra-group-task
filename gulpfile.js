@@ -7,7 +7,11 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     browserify = require('gulp-browserify'),
     wrap = require('gulp-wrap'),
-    inject = require('gulp-inject');
+    inject = require('gulp-inject'),
+    cssprefix = require('gulp-autoprefixer'),
+    cssmin = require('gulp-cssmin'),
+    concat = require('gulp-concat'),
+    rename = require('gulp-rename');
 
 var livereload = require('gulp-livereload'), 
     http = require('http'),
@@ -15,10 +19,10 @@ var livereload = require('gulp-livereload'),
 
 function logError(error) {
     console.log([ '',
-                 '*** AN ERROR SUDDENLY OCCURED ***'.bold.red,
+                 '*** AN ERROR SUDDENLY OCCURED ***',
                 '' + error.name + ' in ' + error.plugin + ': ',
                  error.message,
-                 '*** END OF ERROR *** '.bold.red,
+                 '*** END OF ERROR *** ',
                 ].join('\n')
                );
     this.end();
@@ -54,8 +58,7 @@ gulp.task('htmls', function() {
 });
 
 gulp.task('scripts', function() {
-    return gulp.src(settings.scripts.source)
-    //.pipe(browserify().on('error', logError))    
+    return gulp.src(settings.scripts.source)     
     .pipe(gulpif(argv.production, uglify()))
     .pipe(gulp.dest(settings.scripts.build))
     .pipe(livereload());
@@ -63,8 +66,12 @@ gulp.task('scripts', function() {
 
 gulp.task('sass', function() {
     return gulp.src(settings.styles.sourceSass)
-    .pipe(gulpif(!argv.production, sass().on('error', logError)))
-    .pipe(gulpif(argv.production, sass(settings.styles.buildOptions.outputStyle).on('error', logError)))
+    .pipe(sass().on('error', logError))    
+    .pipe(cssprefix({
+        browsers: ['last 2 versions'],
+        cascade: false,
+    }))
+    .pipe(gulpif(argv.production, cssmin()))    
     .pipe(gulp.dest(settings.styles.buildCss))
     .pipe(livereload());
 });
