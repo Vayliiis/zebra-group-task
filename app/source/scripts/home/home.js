@@ -60,8 +60,12 @@ function validateinput(e) {
 function isTouch() {
     return !!('ontouchstart' in window);
 }
-window.addEventListener('load', function() {
-    if (!isTouch) {
+window.addEventListener('load', function() {    
+    var swCont = document.querySelector('div.swiper-container');
+    swCont.removeEventListener('mousedown', swiper.onTouchStart);
+    
+    var istouch = isTouch();
+    if (!istouch) {
         swiper.allowTouchMove = false;
     }
 })
